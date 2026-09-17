@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5951260187275515579}
   - component: {fileID: 839430948947587384}
   - component: {fileID: 7288952346359914824}
+  - component: {fileID: 1918366935495350792}
   m_Layer: 6
   m_Name: Slime_Green
   m_TagString: Untagged
@@ -249,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   speed: 3
-  attackRange: 1
+  attackRange: 1.3
   attackCooldown: 2
   playerDetectRange: 5
   detectionPoint: {fileID: 7657950536728140801}
@@ -270,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHealth: 0
   maxHealth: 0
+  lootTable: []
 --- !u!95 &7288952346359914824
 Animator:
   serializedVersion: 7
@@ -292,6 +294,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1918366935495350792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897935082562414904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5153865db2ada54ba4f7897f2ae5900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
 --- !u!1 &2824590295009399783
 GameObject:
   m_ObjectHideFlags: 0

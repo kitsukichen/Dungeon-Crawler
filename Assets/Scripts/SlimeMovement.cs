@@ -1,4 +1,3 @@
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -34,23 +33,25 @@ public class SlimeMovement : MonoBehaviour
 
     void Update()
     {
-        CheckForPlayer();
-
-        if (attackCooldownTimer > 0)
+       if (enemyState != EnemyState.Knockback)
         {
-            attackCooldownTimer -= Time.deltaTime;
-        }
+            CheckForPlayer();
 
-        if (enemyState == EnemyState.Chasing)
-        {
-            Chase();
-        }
-        else if (enemyState == EnemyState.Attacking)
-        {
-            // do attack stuff
-            rb.linearVelocity = Vector2.zero;
-        }
+            if (attackCooldownTimer > 0)
+            {
+                attackCooldownTimer -= Time.deltaTime;
+            }
 
+            if (enemyState == EnemyState.Chasing)
+            {
+                Chase();
+            }
+            else if (enemyState == EnemyState.Attacking)
+            {
+                // do attack stuff
+                rb.linearVelocity = Vector2.zero;
+            }
+        }
     }
 
     void Chase()
@@ -98,7 +99,7 @@ public class SlimeMovement : MonoBehaviour
 
     }
   
-    void ChangeState(EnemyState newState)
+    public void ChangeState(EnemyState newState)
     {
         // exit current animation
         if (enemyState == EnemyState.Idle)
@@ -107,6 +108,8 @@ public class SlimeMovement : MonoBehaviour
             anim.SetBool("isChasing", false);
         else if (enemyState == EnemyState.Attacking)
             anim.SetBool("isAttacking", false);
+        else if (enemyState == EnemyState.Hit)
+            anim.SetBool("isHit", false);
 
         enemyState = newState;
 
@@ -117,6 +120,8 @@ public class SlimeMovement : MonoBehaviour
             anim.SetBool("isChasing", true);
         else if (enemyState == EnemyState.Attacking)
             anim.SetBool("isAttacking", true);
+        else if (enemyState == EnemyState.Hit)
+            anim.SetBool("isHit", true);
     }
 
     private void OnDrawGizmosSelected()
@@ -132,4 +137,6 @@ public enum EnemyState
     Idle,
     Chasing,
     Attacking,
+    Hit,
+    Knockback,
 }

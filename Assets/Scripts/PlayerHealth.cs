@@ -1,26 +1,50 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System.Collections;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int currentHealth;
     public int maxHealth;
+    public Slider slider;
+    public Animator anim;
 
-    public TMP_Text healthText;
+    public static event Action OnPlayerDied;
 
     private void Start()
     {
-        healthText.text = "HP: " + currentHealth + " / " + maxHealth;
+        currentHealth = maxHealth;
+        slider.maxValue = maxHealth;
+        slider.value = currentHealth;
+
+        anim = GetComponent<Animator>();
     }
 
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
-        healthText.text = "HP: " + currentHealth + " / " + maxHealth;
+        slider.value = currentHealth;
+
+        StartCoroutine(TriggerHurtAnimation());
 
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
+            OnPlayerDied.Invoke();
         }
     }
+
+    IEnumerator TriggerHurtAnimation()
+    {
+        anim.SetBool("isHit", true);
+
+
+        yield return new WaitForSeconds(0.5f);
+
+
+        anim.SetBool("isHit", false);
+    }
+
 }

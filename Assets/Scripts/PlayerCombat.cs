@@ -8,6 +8,11 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayer;
     public int damage = 1;
 
+    public float knockbackTime = 1;
+    public float stunTime = 0.3f;
+
+    public float knockbackForce = 50;
+
     public Animator anim;
     public float cooldown = 2;
     private float timer;
@@ -38,6 +43,7 @@ public class PlayerCombat : MonoBehaviour
         if (enemies.Length > 0)
         {
             enemies[0].GetComponent<EnemyHealth>().ChangeHealth(-damage);
+            enemies[0].GetComponent<EnemyKnockback>().Knockback(transform, knockbackForce, knockbackTime, stunTime);
         }
 
     }

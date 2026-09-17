@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,10 +9,15 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
 
+    private SlimeMovement slimeMovement;
+
+    [Header("Loot")]
+    public List<LootItem> lootTable = new List<LootItem>();
 
     private void Start()
     {
         currentHealth = maxHealth;
+        slimeMovement = GetComponent<SlimeMovement>();
     }
 
     public void ChangeHealth(int amount)
@@ -21,10 +28,39 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-
-        else if (currentHealth <= 0)
+        else if (slimeMovement != null)
         {
-            Destroy(gameObject);
+            slimeMovement.ChangeState(EnemyState.Hit);
+        }
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        foreach (LootItem lootItem in lootTable)
+        {
+            if (Random.Range(0f, 100f) <= lootItem.dropChance)
+            {
+                InstantiateLoot(lootItem.itemPrefab);
+            }
+            break;
+        }
+
+        Destroy(gameObject);
+    }
+
+    void InstantiateLoot(GameObject loot)
+    {
+        if (loot)
+        {
+            GameObject droppedLoot = Instantiate(loot, transform.position, Quaternion.identity); //this drops loot around enemy at random pos
+
+            droppedLoot.GetComponent<SpriteRenderer>();
         }
     }
 }
+
