@@ -10,12 +10,12 @@ public class PlayerCombat : MonoBehaviour
 
     public float knockbackTime = 1;
     public float stunTime = 0.3f;
-
     public float knockbackForce = 50;
 
     public Animator anim;
     public float cooldown = 2;
     private float timer;
+    public bool isAttacking;
 
     private void Update()
     {
@@ -29,6 +29,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (timer <= 0)
         {
+            isAttacking = true;
             anim.SetBool("isAttacking", true);
 
             timer = cooldown;
@@ -39,11 +40,13 @@ public class PlayerCombat : MonoBehaviour
     {
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, weaponRange, enemyLayer);
-
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<EnemyHealth>().ChangeHealth(-damage);
-            enemies[0].GetComponent<EnemyKnockback>().Knockback(transform, knockbackForce, knockbackTime, stunTime);
+            for(int enemyIndex = 0; enemyIndex < enemies.Length; enemyIndex++) // forloop checks for enemies until enemy number is less than the index
+            {
+                enemies[enemyIndex].GetComponent<EnemyHealth>().ChangeHealth(-damage);
+                enemies[enemyIndex].GetComponent<EnemyKnockback>().Knockback(transform, knockbackForce, knockbackTime, stunTime);
+            }
         }
 
     }
@@ -51,6 +54,7 @@ public class PlayerCombat : MonoBehaviour
     public void FinishAttacking()
     {
         anim.SetBool("isAttacking", false);
+        isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()

@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 8646559871786177924}
   - component: {fileID: 666838868012564284}
   - component: {fileID: 6571871097959865702}
-  - component: {fileID: 4539204818676076615}
   m_Layer: 6
   m_Name: Plant_Right
   m_TagString: Untagged
@@ -155,11 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHealth: 35
   maxHealth: 35
-  lootTable:
-  - itemPrefab: {fileID: 1717679804269020349, guid: 6f41cdf9752d5b2428c99d855b95f5d4, type: 3}
-    dropChance: 75
-  - itemPrefab: {fileID: 5051770252868947744, guid: ffa901244be50e547b3d6c7da0558419, type: 3}
-    dropChance: 25
+  lootTable: []
 --- !u!114 &8646559871786177924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,45 +234,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.18064523, y: 0.0031977496}
-  m_Size: {x: 1.2470778, y: 1.33411}
+  m_Offset: {x: 0.040222168, y: 0.0031977496}
+  m_Size: {x: 0.6985493, y: 1.33411}
   m_Direction: 0
---- !u!58 &4539204818676076615
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2887537249903750131}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -1.154908, y: 0.095237896}
-  m_Radius: 1.0722388
 --- !u!1 &4660776023442944464
 GameObject:
   m_ObjectHideFlags: 0

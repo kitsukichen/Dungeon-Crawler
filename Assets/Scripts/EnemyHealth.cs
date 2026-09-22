@@ -57,7 +57,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (loot)
         {
-            GameObject droppedLoot = Instantiate(loot, transform.position, Quaternion.identity); //this drops loot around enemy at random pos
+            GameObject droppedLoot = Instantiate(loot, transform.position, Quaternion.identity); //this drops loot at enemy pos
 
             droppedLoot.GetComponent<SpriteRenderer>();
         }

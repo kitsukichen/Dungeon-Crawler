@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public Slider slider;
     public Animator anim;
 
+    public TMP_Text healthText;
+
     public static event Action OnPlayerDied;
 
     private void Start()
@@ -18,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         slider.maxValue = maxHealth;
         slider.value = currentHealth;
+        healthText.text = currentHealth + " / 100";
 
         anim = GetComponent<Animator>();
     }
@@ -26,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += amount;
         slider.value = currentHealth;
+        healthText.text = currentHealth + " / 100";
 
         StartCoroutine(TriggerHurtAnimation());
 

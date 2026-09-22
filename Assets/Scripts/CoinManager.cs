@@ -11,7 +11,7 @@ public class CoinManager : MonoBehaviour
         coinText.text = "Coins: " + totalCoins;
     }
 
-    public void ChangeCoin(int amount)
+    public void AddCurrency(int amount)
     {
         totalCoins += amount;
         coinText.text = "Coins: " + totalCoins;

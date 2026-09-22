@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called 50x per frame
     void FixedUpdate()
     {
+
         rb.linearVelocity = new Vector2(movementInput.x * speed, movementInput.y * speed); //top down movement
         FlipSprite();
 
@@ -44,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FlipSprite()
     {
+        if (playerCombat.isAttacking)
+        {
+            return; // stops the flip sprite function
+        }
+
         if (movementInput.x > 0)
         {
             spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
