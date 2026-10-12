@@ -62,7 +62,7 @@ public class SlimeMovement : MonoBehaviour
             Flip();
         }
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction;
+        rb.linearVelocity = direction * speed;
     }
 
     void Flip()

@@ -2,12 +2,15 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
 
     public int currentHealth;
     public int maxHealth;
+    public Slider slider;
 
     private SlimeMovement slimeMovement;
 
@@ -18,11 +21,15 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         slimeMovement = GetComponent<SlimeMovement>();
+
+        slider.maxValue = maxHealth;
+        slider.value = currentHealth;
     }
 
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
+        slider.value = currentHealth;
 
         if (currentHealth > maxHealth)
         {
