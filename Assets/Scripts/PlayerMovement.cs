@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public PlayerCombat playerCombat;
-
+    public bool playerInteracting; // is my key being pressed ? yes or no
 
     SpriteRenderer spriteRenderer;
 
@@ -27,6 +27,19 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetFloat("horizontal", Mathf.Abs(movementInput.x));
         anim.SetFloat("vertical", Mathf.Abs(movementInput.y));
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.started) // is e being pressed?
+        {
+            playerInteracting = true;
+            Debug.Log("pressed e");
+        }
+        else if (context.canceled) // has the player let go?
+        {
+            playerInteracting = false;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)

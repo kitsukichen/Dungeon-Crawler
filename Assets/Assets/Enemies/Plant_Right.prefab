@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlantMovement
   attackRange: 5
-  attackCooldown: 2
+  attackCooldown: 0.8
   playerDetectRange: 2
   detectionPoint: {fileID: 2638416370822434098}
   playerLayer:
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHealth: 35
   maxHealth: 35
+  slider: {fileID: 0}
   lootTable: []
 --- !u!114 &8646559871786177924
 MonoBehaviour:
