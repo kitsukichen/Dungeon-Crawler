@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public GameObject gameOverScreen;
+    public GameObject completeScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,6 +12,7 @@ public class GameController : MonoBehaviour
         PlayerHealth.OnPlayerDied += GameOverScreen;
 
         gameOverScreen.SetActive(false);
+        completeScreen.SetActive(false);
     }
     void OnDisable()
     {
@@ -21,6 +23,11 @@ public class GameController : MonoBehaviour
     void GameOverScreen()
     {
         gameOverScreen.SetActive(true);
+    }
+    public void CompleteScreen()
+    {
+        completeScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void RestartGame()
@@ -33,9 +40,4 @@ public class GameController : MonoBehaviour
         Application.Quit();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

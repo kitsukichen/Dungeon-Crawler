@@ -9,12 +9,12 @@ public class KeyManager : MonoBehaviour
 
     void Start()
     {
-        keyText.text = "Keys: " + totalKeys;
+        keyText.text = "x " + totalKeys;
     }
 
     public void ChangeKey(int amount)
     {
         totalKeys += amount;
-        keyText.text = "Keys: " + totalKeys;
+        keyText.text = "x " + totalKeys;
     }
 }

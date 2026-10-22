@@ -35,10 +35,6 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        else if (slimeMovement != null)
-        {
-            slimeMovement.ChangeState(EnemyState.Hit);
-        }
 
         if (currentHealth <= 0)
         {
@@ -48,6 +44,8 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        EnemyManager.Instance.EnemyKilled();
+
         foreach (LootItem lootItem in lootTable)
         {
             if (Random.Range(0f, 100f) <= lootItem.dropChance)

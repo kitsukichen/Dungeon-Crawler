@@ -28,27 +28,23 @@ public class PlayerHealth : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
+
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
         slider.value = currentHealth;
         healthText.text = currentHealth + " / 100";
 
-        StartCoroutine(TriggerHurtAnimation());
+        if (amount < 0)
+        {
+            anim.SetTrigger("isHit");
+            Debug.Log("player hit!");
+        }
 
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
             OnPlayerDied.Invoke();
         }
-    }
-
-    IEnumerator TriggerHurtAnimation()
-    {
-        anim.SetBool("isHit", true);
-
-
-        yield return new WaitForSeconds(0.5f);
-
-
-        anim.SetBool("isHit", false);
     }
 
 }

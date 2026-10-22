@@ -108,8 +108,6 @@ public class SlimeMovement : MonoBehaviour
             anim.SetBool("isChasing", false);
         else if (enemyState == EnemyState.Attacking)
             anim.SetBool("isAttacking", false);
-        else if (enemyState == EnemyState.Hit)
-            anim.SetBool("isHit", false);
 
         enemyState = newState;
 
@@ -120,8 +118,6 @@ public class SlimeMovement : MonoBehaviour
             anim.SetBool("isChasing", true);
         else if (enemyState == EnemyState.Attacking)
             anim.SetBool("isAttacking", true);
-        else if (enemyState == EnemyState.Hit)
-            anim.SetBool("isHit", true);
     }
 
     private void OnDrawGizmosSelected()
@@ -137,6 +133,5 @@ public enum EnemyState
     Idle,
     Chasing,
     Attacking,
-    Hit,
     Knockback,
 }

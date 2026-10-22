@@ -475,9 +475,7 @@ MonoBehaviour:
   currentHealth: 50
   maxHealth: 50
   slider: {fileID: 6285889368586609831}
-  lootTable:
-  - itemPrefab: {fileID: 1717679804269020349, guid: 6f41cdf9752d5b2428c99d855b95f5d4, type: 3}
-    dropChance: 100
+  lootTable: []
 --- !u!95 &6510568446068331785
 Animator:
   serializedVersion: 7
