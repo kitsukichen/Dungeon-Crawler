@@ -9,6 +9,8 @@ public class Door : MonoBehaviour
 
     public KeyManager keyManager;
     public GameObject doorUI;
+    public AudioClip openSound;
+    public AudioSource audioSource;
 
 
     // Update is called once per frame
@@ -33,6 +35,10 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
+        keyManager.ChangeKey(-1);
+
+        AudioSource.PlayClipAtPoint(openSound, transform.position);
+
         gameObject.SetActive(false);
     }
 

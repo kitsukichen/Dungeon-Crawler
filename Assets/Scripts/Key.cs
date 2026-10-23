@@ -1,16 +1,24 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Key : MonoBehaviour
 {
     public KeyManager keyManager;
     public Door doorToUnlock;
     public int value;
+    public AudioSource audioSource;
+    public AudioClip pickupAudio;
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        keyManager.ChangeKey(value); // this changes the value of the key // aka 1 normal key = 1 key
+        if (collision.CompareTag("Player"))
+        {
+            keyManager.ChangeKey(value);
 
-        Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(pickupAudio, transform.position);
+
+            Destroy(gameObject);
+        }
     }
-
 }

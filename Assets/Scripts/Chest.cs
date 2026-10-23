@@ -22,7 +22,8 @@ public class Chest : MonoBehaviour
     [Header("Chest UI")]
     public TMP_Text questText;
 
-
+    public AudioSource audioSource;
+    public AudioClip openSound;
 
     void Update()
     {
@@ -42,7 +43,7 @@ public class Chest : MonoBehaviour
             }
             else
             {
-                questText.text = $"Enemies Defeated: {EnemyManager.Instance.enemiesKilled} / 20";
+                questText.text = $"Enemies Defeated: {EnemyManager.Instance.enemiesKilled} / 25";
             }
         }
     }
@@ -90,6 +91,12 @@ public class Chest : MonoBehaviour
 
             if(ui != null) ui.SetActive(false);
         }
+    }
+
+    public void OpenAudio()
+    {
+        audioSource.clip = openSound;
+        audioSource.Play();
     }
 
     IEnumerator Message()

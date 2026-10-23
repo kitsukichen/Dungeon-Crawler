@@ -4,6 +4,8 @@ public class HealthPickup : MonoBehaviour
 {
     public int healAmount;
 
+    public AudioSource audioSource;
+    public AudioClip pickupAudio;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +16,9 @@ public class HealthPickup : MonoBehaviour
             if (playerHealth != null && playerHealth.currentHealth < playerHealth.maxHealth)
             {
                 playerHealth.ChangeHealth(healAmount);
+
+                AudioSource.PlayClipAtPoint(pickupAudio, transform.position);
+
                 Destroy(gameObject);
             }
         }
